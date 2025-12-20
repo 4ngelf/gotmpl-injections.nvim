@@ -3,23 +3,6 @@ if vim.g.loaded_chezmoi_nvim then
 end
 vim.g.loaded_chezmoi_nvim = true
 
-vim.filetype.add {
-    extension = {
-        tmpl = "gotmpl",
-    },
-    filename = {
-        [".chezmoiignore"] = "gotmpl",
-        [".chezmoiremove"] = "gotmpl",
-        [".chezmoiexternal.json"] = "gotmpl",
-        [".chezmoiexternal.toml"] = "gotmpl",
-        [".chezmoiexternal.yaml"] = "gotmpl",
-    },
-    pattern = {
-        [".*/%.chezmoiexternals/.*"] = "gotmpl",
-        [".*/%.chezmoitemplates/.*"] = "gotmpl",
-    },
-}
-
 local function try_inject_language(_, _, bufnr, _, metadata)
     local abspath = vim.api.nvim_buf_get_name(bufnr)
     local basename, _ = vim.fs.basename(abspath):gsub("%.tmpl$", "")
