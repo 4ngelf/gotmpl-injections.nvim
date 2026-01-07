@@ -9,5 +9,7 @@
   (comment) @injection.language
     (#gsub! @injection.language "/%*lang:([-_A-Za-z0-9]+)%*/" "%1")
 
-  [(text) (_ (text))] @injection.content
-    (#set! injection.combined))
+  (text) @injection.content
+  (_ (text) @injection.content)
+
+  (#set! injection.combined))
