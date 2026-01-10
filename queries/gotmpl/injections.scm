@@ -7,9 +7,19 @@
   (text)?
   .
   (comment) @injection.language
-    (#gsub! @injection.language "/%*lang:([-_A-Za-z0-9]+)%*/" "%1")
 
   (text) @injection.content
+
+  (#gsub! @injection.language "/%*lang:([-_A-Za-z0-9]+)%*/" "%1")
+  (#set! injection.combined))
+
+(template
+  .
+  (text)?
+  .
+  (comment) @injection.language
+
   (_ (text) @injection.content)
 
+  (#gsub! @injection.language "/%*lang:([-_A-Za-z0-9]+)%*/" "%1")
   (#set! injection.combined))
